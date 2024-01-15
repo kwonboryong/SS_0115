@@ -23,18 +23,257 @@ public class Ex27_Array {
 		//m10();
 		//m11();
 		//m12();
-		m13();
-//		m14();
-		
-		
-		
+		//m13();
+		//m14();
+		//m15();
+		// m16(); -> 2차원 배열
+		// m17(); -> 3차원 배열
+		m18();
 		
 		
 		
 	}
 	
-	
-	
+
+	private static void m18() {
+		/* 다차원 배열의 초기화 리스트 */
+		
+		int[] nums1 = {10, 20, 30};
+		int[][] nums2 = 
+			{
+				{10, 20, 30}, 
+				{40, 50, 60}
+			};
+		int[][][] nums3 = 
+			{
+				{
+					{10, 20, 30}, 
+					{40, 50, 60}
+				}, 
+				{
+					{10, 20, 30}, 
+					{40, 50, 60}
+				}
+			};
+		
+		/* Jagged Array (비정형 배열, 불규칙 배열)
+		   - 
+		   
+		 */
+		
+		int[][] nums4 = new int[3][4]; // (X)
+		
+		// 비정형 배열은 초기화 리스트로만 생성 가능
+		int[][] nums5 = 
+			{
+				{10, 20, 30}, 
+				{40, 50}, 
+				{60, 70, 80,90}
+			};
+		
+		// Jagged Array 탐색: 2중 for문
+		for (int i = 0; i < nums5.length; i++) {
+			for(int j = 0; j < nums5[i].length; j++) {
+				
+				System.out.printf("%5d", nums5[i][j]);
+				
+			}
+			System.out.println();	
+		}
+		
+		//  10   20   30
+		//  40   50
+		//  60   70   80   90
+
+	}
+
+
+	private static void m17() { // 3차원 배열
+		 
+		// 3차원 배열
+		int[][][] nums3 = new int[2][2][3];
+		
+		nums3[0][0][0] = 10; // 1동 1층 1호실
+		nums3[0][0][1] = 20; // 1동 1층 1호실
+		nums3[0][0][2] = 30; // 1동 1층 1호실
+		
+		nums3[0][1][0] = 40; // 1동 2층 1호실
+		nums3[0][1][1] = 50; 
+		nums3[0][1][2] = 60;
+		
+		nums3[1][0][0] = 70; 
+		nums3[1][0][1] = 80; 
+		nums3[1][0][2] = 90; 
+		
+		nums3[1][1][0] = 100; 
+		nums3[1][1][1] = 110; 
+		nums3[1][1][2] = 120; 
+		
+		
+		// 3차원 배열의 탐색: 3중 for문
+		for (int i = 0; i < nums3.length; i++) {
+			
+			for (int j = 0; j < nums3[0].length; j++) { // 2차원 배열
+				
+				for (int k = 0; k < nums3[0][0].length; k++) { // 1차원 배열
+					System.out.printf("%5d", nums3[i][j][k]);
+				}
+				System.out.println();
+			}
+			System.out.println();
+			
+		}
+		
+		
+		
+		
+	}
+
+
+	private static void m16() {
+		/* 배열의 차원
+		  - 1차원, 2차원, 3차원 배열...*/
+		
+		// 1차원 배열
+		int[] nums = new int[3];
+		
+		nums[0] = 10;
+		nums[1] = 20;
+		nums[2] = 30;
+		
+		// System.out.println(Arrays.toString(nums)); // [10, 20, 30]
+		
+		
+		
+		// 2차원 배열
+		int[][] nums2 = new int[2][3]; // [2차원][1차원] (층이 2, 칸이 3인 형태)
+		
+		// 1층 가로부터
+		nums2[0][0] = 10;
+		nums2[0][1] = 20;
+		nums2[0][2] = 30;
+		
+		// 2층 가로부터
+		nums2[1][0] = 40;
+		nums2[1][1] = 50;
+		nums2[1][2] = 60;
+		
+		
+		// ***배열의 실제 구조
+		// nums2의 자료형은? => int 2차원형 // 방 밖에서 보는 시각 (방문이 2개)
+		// nums2[0]의 자료형은? => int 1차원형 // 
+		// nums2[0][0]의 자료형은? => int형
+		nums2[0][1] = 20;
+		
+		System.out.println(nums2.length); // 2, 방 밖에서 보는 시각 (방문이 2개)
+		System.out.println(nums2[0].length); // 3, 방 안에 들어갔더니 각각의 방(index)가 있음 -> 첫 번째 방의 각 방(배열)의 길이
+		System.out.println(nums2[0][0]); // length 없음 ->
+		// 방문 2개(2차원 배열) 
+		// -> 1번 방/2번 방에 작은 방 3개 
+		// -> 3개의 방 중 한 방에 들어감
+		
+		
+		
+		//System.out.println(Arrays.toString(nums2)); (x)
+		System.out.println(Arrays.deepToString(nums2)); // .deepToString 사용
+		
+		
+		
+		// 2차원 배열의 탐색: 2중 for문
+		for (int i = 0; i < nums2.length; i++) { // [0][0] -> [1][0] / 2차원 배열의 변화 0 -> 1 그래서 i는 0, j는 1까지(2)
+		
+			for (int j = 0; j < nums2[0].length; j++) { //
+				System.out.print(nums2[i][j] + "\t");
+				
+			}
+			System.out.println(); // 층이 바뀜 -> 엔터
+		}
+		
+		// 10  20  30	
+		// 40  50  60	
+		
+		
+	}
+
+
+	private static void m15() {
+		/* 배열 요소 삭제 (Deletion)
+		  - 삭제할 요소의 오른쪽에서 부터 왼쪽(<-)으로 복사
+		  - 맨 끝은 0으로 처리(초기화)
+		  - Left Shift : 왼쪽으로 일괄적으로 이동한다.
+		 */
+		
+		int[] nums = {1, 2, 3, 4, 5}; // 배열 
+		
+		int index = 1; // 삭제할 위치
+		
+		
+		// 
+		for (int i = index; i <= nums.length-2; i++) {
+			
+			nums[i] = nums[i+1]; // nums[i]는 왼쪽 방, nums[i+1]은 그 다음 오른쪽 방
+			
+		}
+		
+		nums[nums.length-1] = 0; // nums[]의 마지막 방(nums.length-1)에 0을 넣기
+		
+		System.out.println(Arrays.toString(nums)); // [1, 3, 4, 5, 0]
+		
+		
+		
+		
+	}
+
+
+	private static void m14() {
+		/* 배열 조작
+		  - 삽입, 삭제
+		  - 비용 발생
+		  - 
+		  
+		  배열 요소 삽입 (Insertion)
+		  - 오른쪽(끝)에서 부터 오른쪽(->)으로 복사
+		  - Right Shift : 오른쪽으로 일괄적으로 이동한다.
+		  - ***삽입 이후의 요소들이 인덱스가 변경된다. (삽입 이전의 값들은 변경 X -> 삽입 이후 자리만 값이 이동했기 때문)
+		  
+		 */
+		
+		int[] nums = {1, 2, 3, 4, 5}; // 배열 
+		
+		int index = 1; // 삽입 위치
+		int value = 9; // 삽입할 값
+		
+		// 삽입 전 확인
+		System.out.println("nums[0] = " + nums[0]); // 1
+		System.out.println("nums[3] = " + nums[3]); // 4
+		
+		
+		System.out.println(Arrays.toString(nums)); // 원본: [1, 2, 3, 4, 5]
+		
+		// index(방)에 각 값 복사해서 넣기
+		for (int i = nums.length-2; i >= index; i--) { // i는 nums.length-2 (=마지막에서 2번째 방)
+			//System.out.println(i);
+			nums[i+1] = nums[i];
+			
+			System.out.println(Arrays.toString(nums));
+			/* [1, 2, 3, 4, 5]
+			   [1, 2, 3, 4, 4]
+			   [1, 2, 3, 3, 4]
+			   [1, 2, 2, 3, 4] */
+		}
+		
+		nums[index] = value; // 삽입할 위치(index)에 삽입할 값(value)을 대입
+		
+		System.out.println(Arrays.toString(nums)); // 삽입 후: [1, 9, 2, 3, 4]
+		
+		// 삽입 후 확인
+		
+		System.out.println("nums[0] = " + nums[0]); // 1
+		System.out.println("nums[3] = " + nums[3]); // 3
+		
+		
+	}
+
 
 	private static void m13() {
 		
